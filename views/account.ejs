@@ -1,0 +1,40 @@
+<%- include('./partials/header') %> <%- include('./partials/flash.ejs') %>
+<div class="w-full h-screen flex flex-col items-center px-20 py-10">
+  <h1 class="text-4xl mb-5">My Account</h1>
+  <h2 class="text-2xl mb-5">Welcome, <%= user.fullname %></h2>
+  <h3 class="text-xl mb-5">Email: <%= user.email %></h3>
+  <h3 class="text-xl mb-5">Purchased Products:</h3>
+  <div class="w-full flex flex-wrap gap-5">
+    <% if (user.orders && user.orders.length > 0) { %> <%
+    user.orders.forEach(function(product) { %>
+    <div class="w-1/4 rounded-md overflow-hidden border border-gray-300">
+      <div
+        class="w-full h-48 bg-[<%= product.bgcolor %>] flex items-center justify-center"
+      >
+        <img
+          class="h-full w-full object-cover"
+          src="data:image/jpeg;base64,<%= product.image.toString('base64') %>"
+          alt="<%= product.name %>"
+        />
+      </div>
+      <div class="p-5">
+        <h3 class="text-2xl text-[<%= product.textcolor %>]">
+          <%= product.name %>
+        </h3>
+        <p class="text-lg">Price: ₹ <%= product.price %></p>
+        <form action="/cancelorder/<%= product._id %>" method="post">
+          <button
+            type="submit"
+            class="px-5 py-3 bg-red-500 text-white rounded-full mt-3"
+          >
+            Cancel Order
+          </button>
+        </form>
+      </div>
+    </div>
+    <% }) %> <% } else { %>
+    <p>No purchased products found.</p>
+    <% } %>
+  </div>
+</div>
+<%- include('./partials/footer') %>

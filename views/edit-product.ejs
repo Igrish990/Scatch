@@ -1,0 +1,72 @@
+<%- include('./partials/header') %> <%- include('./partials/flash.ejs') %>
+<div class="w-full h-screen flex items-start px-20 py-20">
+  <div class="w-[75%] flex flex-col gap-5 h-screen">
+    <h1 class="text-3xl mb-5">Edit Product</h1>
+    <form action="/owners/products/edit/<%= product._id %>" method="post">
+      <div class="mb-5">
+        <label for="name" class="block text-lg">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="<%= product.name %>"
+          class="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="price" class="block text-lg">Price</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          value="<%= product.price %>"
+          class="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="discount" class="block text-lg">Discount</label>
+        <input
+          type="number"
+          id="discount"
+          name="discount"
+          value="<%= product.discount %>"
+          class="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="bgcolor" class="block text-lg">Background Color</label>
+        <input
+          type="text"
+          id="bgcolor"
+          name="bgcolor"
+          value="<%= product.bgcolor %>"
+          class="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="panelcolor" class="block text-lg">Panel Color</label>
+        <input
+          type="text"
+          id="panelcolor"
+          name="panelcolor"
+          value="<%= product.panelcolor %>"
+          class="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label for="textcolor" class="block text-lg">Text Color</label>
+        <input
+          type="text"
+          id="textcolor"
+          name="textcolor"
+          value="<%= product.textcolor %>"
+          class="w-full px-3 py-2 border rounded-md"
+        />
+      </div>
+      <button type="submit" class="px-5 py-3 bg-blue-500 text-white rounded-md">
+        Update Product
+      </button>
+    </form>
+  </div>
+</div>
+<%- include('./partials/footer') %>

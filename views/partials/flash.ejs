@@ -1,0 +1,16 @@
+<% if((error.length || success.length) > 0) { %>
+<div
+  id="flash-message"
+  class="absolute top-9 w-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md <%= error.length > 0 ? 'bg-red-500' : 'bg-green-500' %>"
+>
+  <span class="flex justify-center mt-1 mb-1 text-white text-center text-xl">
+    <%= error.length > 0 ? error : success %>
+  </span>
+  <button
+    onclick="document.getElementById('flash-message').style.display='none'"
+    class="absolute gap-4 text-3xl top-1.5 right-1 mt-1 mr-1 text-white"
+  >
+    &times;
+  </button>
+</div>
+<% } %>
